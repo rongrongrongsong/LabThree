@@ -111,6 +111,55 @@ public class HandPokerTest {
 		assertEquals(new Card(eSuit.SPADES, eRank.KING).geteRank(), HSP.getKickers().get(0).geteRank());
 
 	}
+	
+	@Test
+	public void PAIR3() {
+//NEW
+		HandPoker hp = new HandPoker();
+		hp.AddCard(new Card(eSuit.CLUBS, eRank.FOUR));
+		hp.AddCard(new Card(eSuit.CLUBS, eRank.TWO));
+		hp.AddCard(new Card(eSuit.SPADES, eRank.KING));
+		hp.AddCard(new Card(eSuit.CLUBS, eRank.KING));
+		hp.AddCard(new Card(eSuit.HEARTS, eRank.FIVE));
+
+		HandScorePoker HSP = (HandScorePoker) hp.ScoreHand();
+
+		assertEquals("One Pair", HSP.geteHandStrength().toString());
+
+		assertEquals(eRank.KING, HSP.getHiCard().geteRank());
+
+		assertEquals(new Card(eSuit.CLUBS, eRank.FOUR).geteRank(), HSP.getKickers().get(1).geteRank());
+		assertEquals(new Card(eSuit.CLUBS, eRank.TWO).geteRank(), HSP.getKickers().get(2).geteRank());
+		assertEquals(new Card(eSuit.SPADES, eRank.FIVE).geteRank(), HSP.getKickers().get(0).geteRank());
+
+	}
+	
+	@Test
+	public void PAIR4() {
+//NEW
+		HandPoker hp = new HandPoker();
+		hp.AddCard(new Card(eSuit.CLUBS, eRank.FOUR));
+		hp.AddCard(new Card(eSuit.CLUBS, eRank.TWO));
+		hp.AddCard(new Card(eSuit.SPADES, eRank.THREE));
+		hp.AddCard(new Card(eSuit.CLUBS, eRank.THREE));
+		hp.AddCard(new Card(eSuit.HEARTS, eRank.FIVE));
+
+		HandScorePoker HSP = (HandScorePoker) hp.ScoreHand();
+
+		assertEquals("One Pair", HSP.geteHandStrength().toString());
+
+		assertEquals(eRank.THREE, HSP.getHiCard().geteRank());
+
+		assertEquals(new Card(eSuit.CLUBS, eRank.FOUR).geteRank(), HSP.getKickers().get(1).geteRank());
+		assertEquals(new Card(eSuit.CLUBS, eRank.TWO).geteRank(), HSP.getKickers().get(2).geteRank());
+		assertEquals(new Card(eSuit.SPADES, eRank.FIVE).geteRank(), HSP.getKickers().get(0).geteRank());
+
+	}
+	
+	
+	
+	
+	
 
 	@Test
 	public void TWOPAIR1() {
@@ -154,6 +203,24 @@ public class HandPokerTest {
 
 	}
 	
+	@Test
+	public void TWOPAIR3() {
+		//NEW
+		HandPoker hp = new HandPoker();
+		hp.AddCard(new Card(eSuit.CLUBS, eRank.FIVE));
+		hp.AddCard(new Card(eSuit.CLUBS, eRank.THREE));
+		hp.AddCard(new Card(eSuit.SPADES, eRank.TWO));
+		hp.AddCard(new Card(eSuit.CLUBS, eRank.TWO));
+		hp.AddCard(new Card(eSuit.CLUBS, eRank.FIVE));
+
+		HandScorePoker HSP = (HandScorePoker) hp.ScoreHand();
+
+		assertEquals("Two Pairs", HSP.geteHandStrength().toString());
+		assertEquals(eRank.FIVE, HSP.getHiCard().geteRank());
+		assertEquals(eRank.TWO, HSP.getLoCard().geteRank());
+		assertEquals(new Card(eSuit.SPADES, eRank.THREE).geteRank(), HSP.getKickers().get(0).geteRank());
+
+	}
 
 	@Test
 	public void THREEOFAKIND1() {
@@ -194,6 +261,29 @@ public class HandPokerTest {
 		assertEquals(new Card(eSuit.CLUBS, eRank.TWO).geteRank(), HSP.getKickers().get(1).geteRank());
 		assertEquals(new Card(eSuit.SPADES, eRank.FIVE).geteRank(), HSP.getKickers().get(0).geteRank());
 	}
+	
+	@Test
+	public void THREEOFAKIND3() {
+//NEW
+		HandPoker hp = new HandPoker();
+		hp.AddCard(new Card(eSuit.CLUBS, eRank.TWO));
+		hp.AddCard(new Card(eSuit.CLUBS, eRank.THREE));
+		hp.AddCard(new Card(eSuit.SPADES, eRank.FIVE));
+		hp.AddCard(new Card(eSuit.CLUBS, eRank.THREE));
+		hp.AddCard(new Card(eSuit.CLUBS, eRank.THREE));
+
+		HandScorePoker HSP = (HandScorePoker) hp.ScoreHand();
+
+		assertEquals("Three of a Kind", HSP.geteHandStrength().toString());
+		assertEquals(eRank.THREE, HSP.getHiCard().geteRank());
+
+		assertEquals(new Card(eSuit.CLUBS, eRank.FIVE).geteRank(), HSP.getKickers().get(0).geteRank());
+		assertEquals(new Card(eSuit.CLUBS, eRank.TWO).geteRank(), HSP.getKickers().get(1).geteRank());
+	}
+	
+	
+	
+	
 	@Test
 	public void FULLHOUSE1() {
 		HandPoker hp = new HandPoker();
