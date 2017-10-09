@@ -253,7 +253,6 @@ public class HandPoker extends Hand {
 					- (this.getCards().get(i + 1).geteRank().getiRankNbr());
 			if (iDiff == -1) {
 				bisStraight = true;
-				System.out.println("Running aaa");
 			}
 			else{
 				bisStraight = false;
